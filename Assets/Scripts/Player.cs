@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public float verificationRadius;
     public LayerMask whatIsGround;
     public LayerMask whatIsWall;
-    private bool facingRight = true;
+    private int facingRight = 1;
     
     // Ground related variables
     private bool touchingGround;
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public Transform wallVerification;
     private bool wallSliding;
     public float wallSlidingSpeed;
+    public float wallSlideTime;
 
     // Walljumping related variables
     private bool wallJumping;
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour
         player.velocity = new Vector2(input * lateralForce, player.velocity.y);
 
         // Changement de direction
-        if ((!facingRight && input > 0) || (facingRight && input < 0))
+        if ((facingRight == -1 && input > 0) || (facingRight == 1 && input < 0))
         {
             Flip();
         } 
@@ -65,13 +66,10 @@ public class Player : MonoBehaviour
         // Wall Sliding
         touchingWall = Physics2D.OverlapCircle(wallVerification.position, verificationRadius, whatIsWall);
         
-        if (touchingWall && !touchingGround && input != 0)
+        if (touchingWall && !touchingGround) //&& input != 0 
         {
             wallSliding = true;
-        }
-        else
-        {
-            wallSliding = false;
+            Invoke("SetWallSlidingFalse", wallSlideTime);
         }
 
         if (wallSliding)
@@ -89,13 +87,13 @@ public class Player : MonoBehaviour
 
         if (wallJumping) 
         {
-            player.velocity = new Vector2(xWallForce * -input, yWallForce);
+            player.velocity = new Vector2(xWallForce * -facingRight, yWallForce);
         }
     }
 
     private void Flip()
     {
-        facingRight = !facingRight;
+        facingRight = facingRight * -1;
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
@@ -105,4 +103,10 @@ public class Player : MonoBehaviour
     {
         wallJumping = false;
     }
+
+    private void SetWallSlidingFalse()
+    {
+        wallSliding = false;
+    }
+    
 }
