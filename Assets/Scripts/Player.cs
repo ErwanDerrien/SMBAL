@@ -6,12 +6,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Player
-    [SerializeField] private GameObject playerPrefab; 
     [SerializeField] private Transform spawn;
     private Rigidbody2D player;
-    public bool isDead;
-    public int nbDead;
-   // private Transform _transformStart;
+    // private Transform _transformStart;
 
     // Mouvement related variables
     public int lateralForce;
@@ -43,7 +40,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
-        isDead = false;
     }
 
     void Update()
@@ -116,9 +112,9 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacles"))
         {
-            nbDead++;
+            
             gameObject.transform.position = spawn.position; 
-            Debug.Log(nbDead);
+            GameManager.GetInstance().IncrementDeaths();
         }
     }
     
