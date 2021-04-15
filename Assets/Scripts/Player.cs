@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject playerPrefab; 
     [SerializeField] private Transform spawn;
     private Rigidbody2D player;
+    public bool isDead;
     public int nbDead;
    // private Transform _transformStart;
 
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+        isDead = false;
     }
 
     void Update()
@@ -114,16 +116,10 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacles"))
         {
-            Destroy(gameObject);
             nbDead++;
-            respawn();
+            gameObject.transform.position = spawn.position; 
+            Debug.Log(nbDead);
         }
-    }
-
-    void respawn()
-    {
-        Instantiate(playerPrefab, spawn.position, Quaternion.identity);
-
     }
     
 }
