@@ -123,6 +123,7 @@ public class Player : MonoBehaviour
     void respawn()
     {
         Instantiate(playerPrefab, spawn.position, Quaternion.identity);
+
     }
     
 }
