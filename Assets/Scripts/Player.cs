@@ -6,7 +6,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Player
+    private GameObject playerGameObject;
     private Rigidbody2D player;
+    private bool _isDead;
+    private Transform _transformStart;
 
     // Mouvement related variables
     public int lateralForce;
@@ -35,14 +38,13 @@ public class Player : MonoBehaviour
     public float yWallForce;
     public float wallJumpTime;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+        _transformStart = playerGameObject.transform;
+        _isDead = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Deplacement
@@ -107,6 +109,20 @@ public class Player : MonoBehaviour
     private void SetWallSlidingFalse()
     {
         wallSliding = false;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Obstacles"))
+        {
+            _isDead = true;
+            respawn();
+        }
+    }
+
+    void respawn()
+    {
+        playerGameObject.transform.Translate(_transformStart.position.x, _transformStart.position.y,_transformStart.position.z); 
     }
     
 }
