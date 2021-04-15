@@ -6,10 +6,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Player
-    private GameObject playerGameObject;
+    [SerializeField] private GameObject playerPrefab; 
+    [SerializeField] private Transform spawn;
     private Rigidbody2D player;
-    private bool _isDead;
-    private Transform _transformStart;
+    public int nbDead;
+   // private Transform _transformStart;
 
     // Mouvement related variables
     public int lateralForce;
@@ -41,8 +42,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
-        _transformStart = playerGameObject.transform;
-        _isDead = false;
     }
 
     void Update()
@@ -110,19 +109,20 @@ public class Player : MonoBehaviour
     {
         wallSliding = false;
     }
-    
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.CompareTag("Obstacles"))
+        if (other.gameObject.CompareTag("Obstacles"))
         {
-            _isDead = true;
+            Destroy(gameObject);
+            nbDead++;
             respawn();
         }
     }
 
     void respawn()
     {
-        playerGameObject.transform.Translate(_transformStart.position.x, _transformStart.position.y,_transformStart.position.z); 
+        Instantiate(playerPrefab, spawn.position, Quaternion.identity);
     }
     
 }
