@@ -27,5 +27,10 @@ public class GameManager : MonoBehaviour
     {
         _deathCount++;
         Debug.Log(_deathCount);
-    } 
+    }
+
+    public int GETDeathCount()
+    {
+        return _deathCount;
+    }
 }
