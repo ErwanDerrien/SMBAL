@@ -1,0 +1,2 @@
+/Users/erwan/Desktop/Local_ProgJeux/SMBAL/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+/Users/erwan/Desktop/Local_ProgJeux/SMBAL/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
