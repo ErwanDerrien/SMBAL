@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
         {
             
             GameManager.GetInstance().IncrementStage();
-            SceneManager.LoadScene("EndScreen");
+            SceneManager.LoadScene("RezDeChaussee");
         }
     }
     
