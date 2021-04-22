@@ -7,13 +7,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private static GameManager Instance { get; } = new GameManager();
-    private int _deathCount;
-    private int _stageCount;
+    private int _deathCount = 0;
+    private int _stageCount = 1;
     
     void Start()
     {
-        _deathCount = 0;
-        _stageCount = 0;
+       
     }
 
     void Update()
@@ -33,8 +32,8 @@ public class GameManager : MonoBehaviour
     
     public void IncrementStage()
     {
-        _stageCount++;
-        Debug.Log("Stage: " +_stageCount);
+        ++_stageCount;
+        Debug.Log("Stage: " + _stageCount);
         
     }
     public int GetDeathCount()
