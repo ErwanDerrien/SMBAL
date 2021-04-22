@@ -119,7 +119,8 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("Door"))
         {
-            // GameManager.GetInstance().IncrementStage();
+            // SceneManager.LoadScene("EndScreen");
+            GameManager.GetInstance().IncrementStage();
         }
     }
     
