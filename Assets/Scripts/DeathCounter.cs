@@ -15,7 +15,7 @@ public class DeathCounter : MonoBehaviour
     
     void Update()
     {
-        _deathCount = GameManager.GetInstance().GETDeathCount();
+        _deathCount = GameManager.GetInstance().GetDeathCount();
         text.text = "Deaths: " + _deathCount;
     }
 }

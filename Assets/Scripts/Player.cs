@@ -116,6 +116,11 @@ public class Player : MonoBehaviour
             gameObject.transform.position = spawn.position; 
             GameManager.GetInstance().IncrementDeaths();
         }
+
+        if (other.gameObject.CompareTag("Door"))
+        {
+            // GameManager.GetInstance().IncrementStage();
+        }
     }
     
 }
