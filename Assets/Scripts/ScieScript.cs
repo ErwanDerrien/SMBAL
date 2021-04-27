@@ -7,6 +7,7 @@ public class ScieScript : MonoBehaviour
     [SerializeField] public float _range;
     [SerializeField] public float _speed;
     [SerializeField] private float _distance;
+    [SerializeField] public float _angle;
     private int _position;
     private Transform _transformScie;
     private bool _direction = false; 
