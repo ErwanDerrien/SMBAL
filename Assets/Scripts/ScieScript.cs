@@ -43,7 +43,6 @@ public class ScieScript : MonoBehaviour
         {
             _direction = (1 * _switch == 1);
             _switch = _switch * -1;
-            Debug.Log("direction " + _direction);
         }
     } 
 }
