@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeathCounter : MonoBehaviour
+public class StageCounter : MonoBehaviour
 {
     public Text text;
-    private int _deathCount;
+    private int _stageCount;
     void Start()
     {
         text = GetComponent<Text>();
@@ -14,7 +14,7 @@ public class DeathCounter : MonoBehaviour
 
     void Update()
     {
-        _deathCount = GameManager.GetInstance().GetDeathCount();
-        text.text = "Deaths: " + _deathCount;
+        _stageCount = GameManager.GetInstance().GetStageCount();
+        text.text = "Stage: " + _stageCount;
     }
 }

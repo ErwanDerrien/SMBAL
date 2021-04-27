@@ -7,20 +7,17 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private static GameManager Instance { get; } = new GameManager();
-    private int _deathCount;
-    private int _stage = 0;
-
-    [SerializeField] public Text deathUI;
-    [SerializeField] public Text stageUI;
-
+    private int _deathCount = 0;
+    private int _stageCount = 1;
+    
     void Start()
     {
-        IncrementStage();
+       
     }
 
     void Update()
     {
-        deathUI.text = "Deaths: " + _deathCount;
+        
     }
 
     public static GameManager GetInstance()
@@ -29,19 +26,21 @@ public class GameManager : MonoBehaviour
     }
     public void IncrementDeaths()
     {
-        Debug.Log("Death count = " + _deathCount);
         _deathCount++;
+        Debug.Log("Death count = " + _deathCount);
     }
-
+    
+    public void IncrementStage()
+    {
+        ++_stageCount;
+        Debug.Log("Stage: " + _stageCount);
+        
+    }
     public int GetDeathCount()
     {
         return _deathCount;
-    }
-
-    public void IncrementStage()
+    } public int GetStageCount()
     {
-        stageUI.text = "Stage: " + (++_stage);
-        Debug.Log(_stage);
-        
+        return _stageCount;
     }
 }
