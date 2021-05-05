@@ -120,9 +120,24 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("Door"))
         {
-            
-            GameManager.GetInstance().IncrementStage();
-            SceneManager.LoadScene("RezDeChaussee");
+            if (GameManager.GetInstance().getKey())
+            {
+                GameManager.GetInstance().IncrementStage();
+                if (GameManager.GetInstance().GetStageCount() == 3)
+                {
+                    GameManager.GetInstance().setKey(false);
+                }
+                SceneManager.LoadScene("RezDeChaussee");
+            }
+            else
+            {
+                Debug.Log("manque la clé");
+            }
+        }
+
+        if (other.gameObject.CompareTag("Key"))
+        {
+            GameManager.GetInstance().setKey(true);
         }
     }
     
