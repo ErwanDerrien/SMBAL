@@ -122,7 +122,19 @@ public class Player : MonoBehaviour
         {
             
             GameManager.GetInstance().IncrementStage();
-            SceneManager.LoadScene("RezDeChaussee");
+            
+            switch (GameManager.GetInstance().GetStageCount())
+            {
+                case 2:
+                   SceneManager.LoadScene("RezDeChaussee");
+                   break;
+                case 3:
+                    SceneManager.LoadScene("Pont");
+                    break;
+                case 4:
+                    SceneManager.LoadScene("EcranFinal");
+                    break;
+            }
         }
     }
     
