@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("Door"))
         {
+<<<<<<< HEAD
             if (GameManager.GetInstance().getKey())
             {
                 GameManager.GetInstance().IncrementStage();
@@ -138,6 +139,23 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Key"))
         {
             GameManager.GetInstance().setKey(true);
+=======
+            
+            GameManager.GetInstance().IncrementStage();
+            
+            switch (GameManager.GetInstance().GetStageCount())
+            {
+                case 2:
+                   SceneManager.LoadScene("RezDeChaussee");
+                   break;
+                case 3:
+                    SceneManager.LoadScene("Pont");
+                    break;
+                case 4:
+                    SceneManager.LoadScene("EcranFinal");
+                    break;
+            }
+>>>>>>> 72a96c00647deed15fcc5f3015b59d0cb3aa9446
         }
     }
     
