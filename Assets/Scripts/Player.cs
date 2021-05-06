@@ -19,21 +19,21 @@ public class Player : MonoBehaviour
     public float verificationRadius;
     public LayerMask whatIsGround;
     public LayerMask whatIsWall;
-    private int facingRight = 1;
+    private int _facingRight = 1;
     
     // Ground related variables
-    private bool touchingGround;
+    private bool _touchingGround;
     public Transform groundedVerification;
 
     // Wall related varialbes
-    private bool touchingWall;
+    private bool _touchingWall;
     public Transform wallVerification;
-    private bool wallSliding;
+    private bool _wallSliding;
     public float wallSlidingSpeed;
     public float wallSlideTime;
 
     // Walljumping related variables
-    private bool wallJumping;
+    private bool _wallJumping;
     public float xWallForce;
     public float yWallForce;
     public float wallJumpTime;
@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
-      //  GameManager.PlaySound("music");
     }
 
     void Update()
@@ -51,52 +50,52 @@ public class Player : MonoBehaviour
         player.velocity = new Vector2(input * lateralForce, player.velocity.y);
 
         // Changement de direction
-        if ((facingRight == -1 && input > 0) || (facingRight == 1 && input < 0))
+        if ((_facingRight == -1 && input > 0) || (_facingRight == 1 && input < 0))
         {
             Flip();
         } 
         
         // Sauts
-        touchingGround = Physics2D.OverlapCircle(groundedVerification.position, verificationRadius, whatIsGround);
+        _touchingGround = Physics2D.OverlapCircle(groundedVerification.position, verificationRadius, whatIsGround);
         
-        if (Input.GetKeyDown(KeyCode.UpArrow) && touchingGround)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && _touchingGround)
         {
             GameManager.PlaySound("jump");
             player.velocity = Vector2.up * verticalForce;
         }
         
         // Wall Sliding
-        touchingWall = Physics2D.OverlapCircle(wallVerification.position, verificationRadius, whatIsWall);
+        _touchingWall = Physics2D.OverlapCircle(wallVerification.position, verificationRadius, whatIsWall);
         
-        if (touchingWall && !touchingGround) //&& input != 0 
+        if (_touchingWall && !_touchingGround) //&& input != 0 
         {
-            wallSliding = true;
+            _wallSliding = true;
             Invoke("SetWallSlidingFalse", wallSlideTime);
         }
 
-        if (wallSliding)
+        if (_wallSliding)
         {
             player.velocity = new Vector2(player.velocity.x,
                 Mathf.Clamp(player.velocity.y, -wallSlidingSpeed, float.MaxValue));
         }
         
         //Walljumping
-        if (Input.GetKeyDown(KeyCode.UpArrow) && wallSliding)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && _wallSliding)
         {
             GameManager.PlaySound("jump");
-            wallJumping = true;
+            _wallJumping = true;
             Invoke("SetWallJumpingFalse", wallJumpTime);
         }
 
-        if (wallJumping) 
+        if (_wallJumping) 
         {
-            player.velocity = new Vector2(xWallForce * -facingRight, yWallForce);
+            player.velocity = new Vector2(xWallForce * -_facingRight, yWallForce);
         }
     }
 
     private void Flip()
     {
-        facingRight = facingRight * -1;
+        _facingRight = _facingRight * -1;
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
@@ -104,12 +103,12 @@ public class Player : MonoBehaviour
 
     private void SetWallJumpingFalse()
     {
-        wallJumping = false;
+        _wallJumping = false;
     }
 
     private void SetWallSlidingFalse()
     {
-        wallSliding = false;
+        _wallSliding = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -126,7 +125,6 @@ public class Player : MonoBehaviour
             if (GameManager.GetInstance().GETKey())
             {
                 GameManager.GetInstance().IncrementStage();
-                GameManager.PlaySound("nextLevel");
                 // Changing stage
                 switch (GameManager.GetInstance().GetStageCount())
                 {
