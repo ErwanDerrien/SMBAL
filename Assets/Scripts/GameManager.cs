@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void setKey(bool possesion)
     {
-        _key = true;
+        _key = possesion;
     }
 
     public bool getKey()

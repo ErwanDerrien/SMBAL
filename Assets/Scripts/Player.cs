@@ -120,15 +120,26 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("Door"))
         {
-<<<<<<< HEAD
             if (GameManager.GetInstance().getKey())
             {
                 GameManager.GetInstance().IncrementStage();
-                if (GameManager.GetInstance().GetStageCount() == 3)
+
+                // Changing stage
+                switch (GameManager.GetInstance().GetStageCount())
                 {
-                    GameManager.GetInstance().setKey(false);
+                    case 2:
+                        SceneManager.LoadScene("RezDeChaussee");
+                        break;
+                    case 3:
+                        SceneManager.LoadScene("Pont");
+                        //If current stage is the 3rd floor, make it so key is required
+                        GameManager.GetInstance().setKey(false);
+                        Debug.Log("The key is now false : " +GameManager.GetInstance().getKey());
+                        break;
+                    case 4:
+                        SceneManager.LoadScene("EcranFinal");
+                        break;
                 }
-                SceneManager.LoadScene("RezDeChaussee");
             }
             else
             {
@@ -139,23 +150,8 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Key"))
         {
             GameManager.GetInstance().setKey(true);
-=======
-            
-            GameManager.GetInstance().IncrementStage();
-            
-            switch (GameManager.GetInstance().GetStageCount())
-            {
-                case 2:
-                   SceneManager.LoadScene("RezDeChaussee");
-                   break;
-                case 3:
-                    SceneManager.LoadScene("Pont");
-                    break;
-                case 4:
-                    SceneManager.LoadScene("EcranFinal");
-                    break;
-            }
->>>>>>> 72a96c00647deed15fcc5f3015b59d0cb3aa9446
+            Debug.Log("The key is now true : " +GameManager.GetInstance().getKey());
+            Destroy(GameObject.FindWithTag("Key"));
         }
     }
     
