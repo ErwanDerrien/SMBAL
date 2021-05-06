@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+      //  GameManager.PlaySound("music");
     }
 
     void Update()
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.UpArrow) && touchingGround)
         {
+            GameManager.PlaySound("jump");
             player.velocity = Vector2.up * verticalForce;
         }
         
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
         //Walljumping
         if (Input.GetKeyDown(KeyCode.UpArrow) && wallSliding)
         {
+            GameManager.PlaySound("jump");
             wallJumping = true;
             Invoke("SetWallJumpingFalse", wallJumpTime);
         }
@@ -113,17 +116,17 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacles"))
         {
-            
+            GameManager.PlaySound("death");
             gameObject.transform.position = spawn.position; 
             GameManager.GetInstance().IncrementDeaths();
         }
 
         if (other.gameObject.CompareTag("Door"))
         {
-            if (GameManager.GetInstance().getKey())
+            if (GameManager.GetInstance().GETKey())
             {
                 GameManager.GetInstance().IncrementStage();
-
+                GameManager.PlaySound("nextLevel");
                 // Changing stage
                 switch (GameManager.GetInstance().GetStageCount())
                 {
@@ -133,8 +136,8 @@ public class Player : MonoBehaviour
                     case 3:
                         SceneManager.LoadScene("Pont");
                         //If current stage is the 3rd floor, make it so key is required
-                        GameManager.GetInstance().setKey(false);
-                        Debug.Log("The key is now false : " +GameManager.GetInstance().getKey());
+                        GameManager.GetInstance().SetKey(false);
+                        Debug.Log("The key is now false : " +GameManager.GetInstance().GETKey());
                         break;
                     case 4:
                         SceneManager.LoadScene("EcranFinal");
@@ -149,8 +152,8 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("Key"))
         {
-            GameManager.GetInstance().setKey(true);
-            Debug.Log("The key is now true : " +GameManager.GetInstance().getKey());
+            GameManager.GetInstance().SetKey(true);
+            Debug.Log("The key is now true : " +GameManager.GetInstance().GETKey());
             Destroy(GameObject.FindWithTag("Key"));
         }
     }
