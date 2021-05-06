@@ -96,9 +96,10 @@ public class Player : MonoBehaviour
     private void Flip()
     {
         _facingRight = _facingRight * -1;
-        Vector3 scaler = transform.localScale;
+        var transform1 = transform;
+        Vector3 scaler = transform1.localScale;
         scaler.x *= -1;
-        transform.localScale = scaler;
+        transform1.localScale = scaler;
     }
 
     private void SetWallJumpingFalse()
