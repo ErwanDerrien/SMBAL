@@ -114,6 +114,11 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            transform.parent = other.transform;
+        }
+        
         if (other.gameObject.CompareTag("Obstacles"))
         {
             GameManager.PlaySound("death");
@@ -156,5 +161,12 @@ public class Player : MonoBehaviour
             Destroy(GameObject.FindWithTag("Key"));
         }
     }
-    
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            transform.parent = null;
+        }
+    }
 }

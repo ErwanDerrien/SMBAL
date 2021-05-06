@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\DeathCounter.cs" />
      <Compile Include="Assets\Scripts\EndScreenManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\PlatformScript.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\ScieScript.cs" />
      <Compile Include="Assets\Scripts\StageCounter.cs" />
