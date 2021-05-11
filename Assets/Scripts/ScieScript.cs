@@ -20,12 +20,7 @@ public class ScieScript : MonoBehaviour
         _transformScie = GetComponent<Transform>();
         InvokeRepeating("MoveScie", 0.1f, speed);
     }
-
- 
-    void Update()
-    {
-        
-    }
+    
 
     void MoveScie()
     {

@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     private static AudioClip _deathSound;
     private static AudioClip _jumpSound;
     private static AudioClip _music1;
-    private static AudioClip _music2;
-    private static AudioClip _music3;
     private static AudioClip _nextLevel;
     private static AudioSource _audioSource;
     private bool _key = true;
@@ -23,8 +21,6 @@ public class GameManager : MonoBehaviour
         _deathSound = Resources.Load<AudioClip>("death");
         _jumpSound = Resources.Load<AudioClip>("jump");
         _music1 = Resources.Load<AudioClip>("music1");
-        _music2 = Resources.Load<AudioClip>("music2");
-        _music3 = Resources.Load<AudioClip>("music3");
         _nextLevel = Resources.Load<AudioClip>("nextLevel");
 
         _audioSource = GetComponent<AudioSource>();
@@ -48,12 +44,6 @@ public class GameManager : MonoBehaviour
                 break;
             case "music1" :
                 _audioSource.PlayOneShot(_music1, 0.1f);
-                break;
-            case "music2" :
-                _audioSource.PlayOneShot(_music2, 0.1f);
-                break;
-            case "music3" :
-                _audioSource.PlayOneShot(_music3, 0.1f);
                 break;
             case "nextLevel" :
                 _audioSource.PlayOneShot(_nextLevel);
@@ -81,11 +71,17 @@ public class GameManager : MonoBehaviour
     public int GetDeathCount()
     {
         return _deathCount;
-    } public int GetStageCount()
+    } 
+    public int GetStageCount()
     {
         return _stageCount;
     }
 
+    public void Restart()
+    {
+        _deathCount = 0;
+        _stageCount = 1;
+    }
     public void SetKey(bool possesion)
     {
         _key = possesion;

@@ -5,6 +5,7 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class EndScreenManager : MonoBehaviour
 {
@@ -12,18 +13,18 @@ public class EndScreenManager : MonoBehaviour
 
     private int _scoreFinal;
     
-    [SerializeField] private TextMeshProUGUI ScoreFinal;
-    [SerializeField] private TextMeshProUGUI HighScore1;
-    [SerializeField] private TextMeshProUGUI HighScore2;
-    [SerializeField] private TextMeshProUGUI HighScore3;
-    // Start is called before the first frame update
+    [SerializeField] private TextMeshProUGUI scoreFinal;
+    [SerializeField] private TextMeshProUGUI highScore1;
+    [SerializeField] private TextMeshProUGUI highScore2;
+    [SerializeField] private TextMeshProUGUI highScore3;
+ 
     void Start()
     {
         //Affichage Score Final
         _scoreFinal = GameManager.GetInstance().GetDeathCount();
-        ScoreFinal.text += _scoreFinal;
+        scoreFinal.text += _scoreFinal + " deaths";
         
-        string[] highscores = new string[4];
+        string[] highScores = new string[4];
         int counter = 0;
         
         //Ajout highscores enregistres a un tableau
@@ -32,7 +33,7 @@ public class EndScreenManager : MonoBehaviour
 
         while ((line = reader.ReadLine()) != null)
         {
-            highscores[counter] = line;
+            highScores[counter] = line;
             counter++;
         }
         reader.Close();
@@ -41,7 +42,7 @@ public class EndScreenManager : MonoBehaviour
         int position = 0;
         for (int i = 0; i < 3; i++)
         {
-            if (_scoreFinal < Int32.Parse(highscores[i]))
+            if (_scoreFinal < Int32.Parse(highScores[i]))
             {
                 Debug.Log("position : " + position);
                 break;
@@ -54,33 +55,29 @@ public class EndScreenManager : MonoBehaviour
         string newValue = _scoreFinal.ToString();
         for (int i = position; i < 4; i++)
         {
-            temp = highscores[i];
-            highscores[i] = newValue;
+            temp = highScores[i];
+            highScores[i] = newValue;
             newValue = temp;
         }
 
         // Ajouter le score a la liste
         StreamWriter writer = new StreamWriter(path);
-        foreach (var newLine in highscores)
+        foreach (var newLine in highScores)
         {
             writer.WriteLine(newLine);
         }
         
         writer.Close();
 
-        HighScore1.text += highscores[0];
-        HighScore2.text += highscores[1];
-        HighScore3.text += highscores[2];
+        highScore1.text += highScores[0] + " deaths";
+        highScore2.text += highScores[1] + " deaths";
+        highScore3.text += highScores[2] + " deaths";
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     
     public void Restart()
     {
+        GameManager.GetInstance().Restart();
         SceneManager.LoadScene("SousSol");
     }
 }
