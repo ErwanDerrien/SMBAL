@@ -303,7 +303,7 @@ PrefabInstance:
     - target: {fileID: 2093891570182342456, guid: 067e54533d7aebe43a8f9020653443d2,
         type: 3}
       propertyPath: m_Name
-      value: SpriteTest
+      value: Smc
       objectReference: {fileID: 0}
     - target: {fileID: 2093891570182342457, guid: 067e54533d7aebe43a8f9020653443d2,
         type: 3}
