@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ScieScript : MonoBehaviour
 {
-    [SerializeField] public float _range;
-    [SerializeField] public float _speed;
-    [SerializeField] private float _distance;
-    [SerializeField] public float _angle;
+    [SerializeField] public float range;
+    [SerializeField] public float speed;
+    [SerializeField] private float distance;
+    [SerializeField] public float angle;
     private int _position;
     private Transform _transformScie;
     private bool _direction = false; 
@@ -17,7 +18,7 @@ public class ScieScript : MonoBehaviour
     void Start()
     {
         _transformScie = GetComponent<Transform>();
-        InvokeRepeating("MoveScie", 0.1f, _speed);
+        InvokeRepeating("MoveScie", 0.1f, speed);
     }
 
  
@@ -30,17 +31,17 @@ public class ScieScript : MonoBehaviour
     {
         if (_direction)
         {
-            _transformScie.Translate(Vector3.up * _range);
+            _transformScie.Translate(Vector3.up * range);
         }
 
         if (!_direction)
         {
-            _transformScie.Translate(Vector3.down * _range);
+            _transformScie.Translate(Vector3.down * range);
         }
         
         _position = _position + _switch;
         
-        if (_position >= _distance || _position  <= 0)
+        if (_position >= distance || _position  <= 0)
         {
             _direction = (1 * _switch == 1);
             _switch = _switch * -1;

@@ -1844,10 +1844,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a91c6b2eb1921044a00e43a90860325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 8
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 8
+  angle: 0
 --- !u!1 &338331370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,10 +2702,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a91c6b2eb1921044a00e43a90860325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 8
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 8
+  angle: 0
 --- !u!1001 &470483560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3188,10 +3188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a91c6b2eb1921044a00e43a90860325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 12
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 12
+  angle: 0
 --- !u!1 &652545064
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,10 +3224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68c4562a8808304f9bf1be4fe41eaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 49
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 49
+  angle: 0
 --- !u!61 &652545066
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3345,12 +3345,12 @@ PrefabInstance:
     - target: {fileID: 2505811430487563385, guid: e8aecfbbf1e284900948a3abec5e13fb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 274.9
+      value: 269.7
       objectReference: {fileID: 0}
     - target: {fileID: 2505811430487563385, guid: e8aecfbbf1e284900948a3abec5e13fb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -31.7
+      value: -32
       objectReference: {fileID: 0}
     - target: {fileID: 2505811430487563385, guid: e8aecfbbf1e284900948a3abec5e13fb,
         type: 3}
@@ -3813,10 +3813,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68c4562a8808304f9bf1be4fe41eaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 49
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 49
+  angle: 0
 --- !u!61 &720190915
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5624,10 +5624,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68c4562a8808304f9bf1be4fe41eaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 15
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 15
+  angle: 0
 --- !u!1001 &1180686763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5814,10 +5814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a91c6b2eb1921044a00e43a90860325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 12
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 12
+  angle: 0
 --- !u!1 &1212785239
 GameObject:
   m_ObjectHideFlags: 0
@@ -6132,10 +6132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68c4562a8808304f9bf1be4fe41eaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 15
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 15
+  angle: 0
 --- !u!1 &1263877900
 GameObject:
   m_ObjectHideFlags: 0
@@ -7136,10 +7136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68c4562a8808304f9bf1be4fe41eaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 15
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 15
+  angle: 0
 --- !u!1001 &1389917894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8096,10 +8096,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a91c6b2eb1921044a00e43a90860325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 12
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 12
+  angle: 0
 --- !u!1 &1588162497
 GameObject:
   m_ObjectHideFlags: 0
@@ -9370,10 +9370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a91c6b2eb1921044a00e43a90860325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 12
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 12
+  angle: 0
 --- !u!61 &1846963518
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9563,10 +9563,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a91c6b2eb1921044a00e43a90860325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 12
-  _angle: 0
+  range: 0
+  speed: 0
+  distance: 0
+  angle: 0
 --- !u!1001 &1929181983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10684,6 +10684,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2093891570182342457, guid: 067e54533d7aebe43a8f9020653443d2,
         type: 3}
+      propertyPath: key
+      value: 
+      objectReference: {fileID: 7129931128147876749, guid: 22eb363d609e48349b6efbcfd9264496,
+        type: 3}
+    - target: {fileID: 2093891570182342457, guid: 067e54533d7aebe43a8f9020653443d2,
+        type: 3}
       propertyPath: spawn
       value: 
       objectReference: {fileID: 2010182250}
@@ -10707,10 +10713,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68c4562a8808304f9bf1be4fe41eaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.5
-  _speed: 0.1
-  _distance: 15
-  _angle: 0
+  range: 0.5
+  speed: 0.1
+  distance: 15
+  angle: 0
 --- !u!1 &2099084379
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlatformScript : MonoBehaviour
 {
-    [SerializeField] public float _range;
-    [SerializeField] public float _speed;
-    [SerializeField] private float _distance;
-    [SerializeField] public float _angle;
+    [SerializeField] public float range;
+    [SerializeField] public float speed;
+    [SerializeField] private float distance;
+    [SerializeField] public float angle;
     private int _position;
     private Transform _transformPlatform;
     private bool _direction = false; 
@@ -17,23 +18,23 @@ public class PlatformScript : MonoBehaviour
     void Start()
     {
         _transformPlatform = GetComponent<Transform>();
-        InvokeRepeating("MoveBridge", 0.1f, _speed);
+        InvokeRepeating("MovePlatform", 0.1f, speed);
     }
-    void MoveBridge()
+    void MovePlatform()
     {
         if (_direction)
         {
-            _transformPlatform.Translate(Vector3.right * _range);
+            _transformPlatform.Translate(Vector3.right * range);
         }
 
         if (!_direction)
         {
-            _transformPlatform.Translate(Vector3.left * _range);
+            _transformPlatform.Translate(Vector3.left * range);
         }
         
         _position = _position + _switch;
         
-        if (_position >= _distance || _position  <= 0)
+        if (_position >= distance || _position  <= 0)
         {
             _direction = (1 * _switch == 1);
             _switch = _switch * -1;

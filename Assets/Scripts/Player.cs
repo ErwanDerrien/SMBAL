@@ -8,9 +8,13 @@ public class Player : MonoBehaviour
 {
     // Player
     [SerializeField] private Transform spawn;
-    private Rigidbody2D player;
-    // private Transform _transformStart;
+    private Rigidbody2D _player;
+    private int _deathLvl3 = 0;
 
+    // Key
+    [SerializeField]private GameObject key;
+    private bool _helpKey;
+    
     // Mouvement related variables
     public int lateralForce;
     public int verticalForce;
@@ -40,14 +44,15 @@ public class Player : MonoBehaviour
     
     void Start()
     {
-        player = GetComponent<Rigidbody2D>();
+        _player = GetComponent<Rigidbody2D>();
+        _helpKey = false;
     }
 
     void Update()
     {
         // Deplacement
         float input = Input.GetAxisRaw("Horizontal");
-        player.velocity = new Vector2(input * lateralForce, player.velocity.y);
+        _player.velocity = new Vector2(input * lateralForce, _player.velocity.y);
 
         // Changement de direction
         if ((_facingRight == -1 && input > 0) || (_facingRight == 1 && input < 0))
@@ -61,7 +66,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && _touchingGround)
         {
             GameManager.PlaySound("jump");
-            player.velocity = Vector2.up * verticalForce;
+            _player.velocity = Vector2.up * verticalForce;
         }
         
         // Wall Sliding
@@ -75,8 +80,8 @@ public class Player : MonoBehaviour
 
         if (_wallSliding)
         {
-            player.velocity = new Vector2(player.velocity.x,
-                Mathf.Clamp(player.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            _player.velocity = new Vector2(_player.velocity.x,
+                Mathf.Clamp(_player.velocity.y, -wallSlidingSpeed, float.MaxValue));
         }
         
         //Walljumping
@@ -89,7 +94,7 @@ public class Player : MonoBehaviour
 
         if (_wallJumping) 
         {
-            player.velocity = new Vector2(xWallForce * -_facingRight, yWallForce);
+            _player.velocity = new Vector2(xWallForce * -_facingRight, yWallForce);
         }
     }
 
@@ -124,6 +129,13 @@ public class Player : MonoBehaviour
             GameManager.PlaySound("death");
             gameObject.transform.position = spawn.position; 
             GameManager.GetInstance().IncrementDeaths();
+            if (GameManager.GetInstance().GetStageCount() == 3)
+                _deathLvl3++;
+            if(_deathLvl3 > 2 && !_helpKey)
+            {
+                Instantiate(key, new Vector3(-10f, 0f, 0f), Quaternion.identity);
+                _helpKey = true;
+            }
         }
 
         if (other.gameObject.CompareTag("Door"))
