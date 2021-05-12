@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
             GameManager.GetInstance().IncrementDeaths();
             if (GameManager.GetInstance().GetStageCount() == 3)
                 _deathLvl3++;
-            if(_deathLvl3 > 2 && !_helpKey)
+            if(_deathLvl3 > 5 && !_helpKey)
             {
                 Instantiate(key, new Vector3(-10f, 0f, 0f), Quaternion.identity);
                 _helpKey = true;

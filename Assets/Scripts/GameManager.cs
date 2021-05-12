@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private int _stageCount = 1;
     private static AudioClip _deathSound;
     private static AudioClip _jumpSound;
-    private static AudioClip _music1;
+    private static AudioClip _music2;
     private static AudioClip _nextLevel;
     private static AudioSource _audioSource;
     private bool _key = true;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         _deathSound = Resources.Load<AudioClip>("death");
         _jumpSound = Resources.Load<AudioClip>("jump");
-        _music1 = Resources.Load<AudioClip>("music1");
+        _music2 = Resources.Load<AudioClip>("music2");
         _nextLevel = Resources.Load<AudioClip>("nextLevel");
 
         _audioSource = GetComponent<AudioSource>();
@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour
             case "death" :
                 _audioSource.PlayOneShot(_deathSound,0.2f);
                 break;
-            case "music1" :
-                _audioSource.PlayOneShot(_music1, 0.1f);
+            case "music2" :
+                _audioSource.PlayOneShot(_music2, 0.1f);
                 break;
             case "nextLevel" :
                 _audioSource.PlayOneShot(_nextLevel);
