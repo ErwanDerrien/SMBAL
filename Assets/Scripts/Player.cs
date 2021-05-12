@@ -12,8 +12,12 @@ public class Player : MonoBehaviour
     private int _deathLvl3 = 0;
 
     // Key
-    [SerializeField]private GameObject key;
+    [SerializeField] private GameObject key;
     private bool _helpKey;
+    
+    // Message
+    [SerializeField] private GameObject message;
+    private bool _helpMsg;
     
     // Mouvement related variables
     public int lateralForce;
@@ -46,6 +50,7 @@ public class Player : MonoBehaviour
     {
         _player = GetComponent<Rigidbody2D>();
         _helpKey = false;
+        _helpMsg = false;
     }
 
     void Update()
@@ -162,6 +167,12 @@ public class Player : MonoBehaviour
             }
             else
             {
+                if (!_helpMsg)
+                {
+                    Instantiate(message, new Vector3(235f, 20f, 0f), Quaternion.identity);
+                    _helpMsg = true;
+                }
+             
                 Debug.Log("manque la clé");
             }
         }
@@ -179,6 +190,12 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Platform"))
         {
             transform.parent = null;
+        }
+
+        if (other.gameObject.CompareTag("Door") && GameManager.GetInstance().GetStageCount() == 3)
+        {
+            Destroy(GameObject.FindWithTag("MsgHelp"));
+            _helpMsg = false;
         }
     }
 }

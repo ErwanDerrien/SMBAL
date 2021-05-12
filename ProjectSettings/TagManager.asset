@@ -11,6 +11,7 @@ TagManager:
   - DeathUI
   - Key
   - Platform
+  - MsgHelp
   layers:
   - Default
   - TransparentFX
