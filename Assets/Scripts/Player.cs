@@ -157,6 +157,7 @@ public class Player : MonoBehaviour
                     case 3:
                         SceneManager.LoadScene("Pont");
                         //If current stage is the 3rd floor, make it so key is required
+                        _deathLvl3 = 0;
                         GameManager.GetInstance().SetKey(false);
                         Debug.Log("The key is now false : " +GameManager.GetInstance().GETKey());
                         break;
